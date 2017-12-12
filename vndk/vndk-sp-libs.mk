@@ -1,5 +1,4 @@
 VNDK_SP_LIBRARIES := \
-    android.hardware.graphics.allocator@2.0 \
     android.hardware.graphics.mapper@2.0 \
     android.hardware.graphics.mapper@2.1 \
     android.hardware.graphics.mapper@3.0 \
@@ -33,7 +32,7 @@ VNDK_SP_LIBRARIES := \
     liblzma \
     libprocessgroup \
     libunwind \
-    libunwindstack\
+    libunwindstack \
     libutils \
     libutilscallstack \
     libdexfile \
