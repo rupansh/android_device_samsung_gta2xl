@@ -85,6 +85,9 @@ KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-an
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
 TARGET_USE_SDCLANG := true
 
+# APEX image
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 # USE_CUSTOM_AUDIO_POLICY := 1
