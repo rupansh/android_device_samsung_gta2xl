@@ -4,11 +4,7 @@ set_prop(rild, diag_prop);
 allow rild fsg_file:file { getattr open read };
 allow rild fsg_file:dir { search open read };
 allow rild fsg_file:lnk_file read;
-
-allow rild rild_exec:file execute_no_trans;
-
+allow rild vendor_file:file rx_file_perms;
 allow rild fwk_sensor_hwservice:hwservice_manager find;
-
-allow rild proc:file { open read };
-allow rild unlabeled:dir getattr;
-allow rild unlabeled:file { getattr open read };
+allow rild proc:file read;
+allow rild system_file:file execute_no_trans;
