@@ -14,9 +14,8 @@
 # limitations under the License.
 #
 
-$(call inherit-product, vendor/xiaomi/rosy/rosy-vendor.mk)
-$(call inherit-product, vendor/xiaomi/msm8953-common/msm8953-common-vendor.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n.mk)
+$(call inherit-product, vendor/samsung/gta2xl/gta2xl-vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -34,8 +33,8 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1200
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -121,14 +120,17 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+     Snap
+
+PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl \
+    camera.device@3.3-impl \
     camera.device@3.2-impl \
-    camera.msm8953 \
-    libmm-qcamera \
-    Snap \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    libjpega \
+    vendor.samsung.hardware.camera.device@1.0.so \
+    vendor.qti.hardware.camera.device@1.0_vendor.so
 
 # Offline Charger
 PRODUCT_PACKAGES += \
@@ -157,10 +159,6 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libtinyxml
 
-# Device-specific settings
-PRODUCT_PACKAGES += \
-    XiaomiParts
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -172,10 +170,6 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libebtc
-
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_rosy
 
 # FM
 PRODUCT_PACKAGES += \
@@ -214,24 +208,72 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
 
-# IDC
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
-    $(LOCAL_PATH)/idc/uinput-goodix.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-goodix.idc
-
 # Input
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/AVRCP.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/AVRCP.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b501.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b501.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_a009.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_04e8_Product_a009.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1532_Product_0900.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1532_Product_0900.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_22b8_Product_093d.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_22b8_Product_093d.kl \
+    $(LOCAL_PATH)/keylayout/Generic.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Generic.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c216.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c216.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_0268.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_054c_Product_0268.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1689_Product_fd00.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1689_Product_fd00.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_2378_Product_1008.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_2378_Product_1008.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0079_Product_0011.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0079_Product_0011.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c219.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c219.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_05c4.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_054c_Product_05c4.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1689_Product_fd01.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1689_Product_fd01.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_2378_Product_100a.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_2378_Product_100a.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_045e_Product_028e.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c21d.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c21d.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_09cc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_054c_Product_09cc.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1689_Product_fe00.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1689_Product_fe00.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_2943_Product_0020.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_2943_Product_0020.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_045e_Product_02d1.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_045e_Product_02d1.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c21f.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c21f.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0583_Product_2060.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0583_Product_2060.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_18d1_Product_2c40.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_18d1_Product_2c40.kl \
     $(LOCAL_PATH)/keylayout/ft5x06_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ft5x06_ts.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_045e_Product_02e0.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_045e_Product_02e0.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c294.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c294.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_05ac_Product_0239.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_18d1_Product_5018.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_18d1_Product_5018.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/msm8953-snd-card-mtp_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/msm8953-snd-card-mtp_Button_Jack.kl \
-    $(LOCAL_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
-    $(LOCAL_PATH)/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl
-
+    $(LOCAL_PATH)/keylayout/Vendor_0461_Product_4dfc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0461_Product_4dfc.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c299.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c299.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_05ac_Product_0255.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_05ac_Product_0255.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1949_Product_0401.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1949_Product_0401.kl \
+    $(LOCAL_PATH)/keylayout/qwerty.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qwerty.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b32f.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b32f.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c532.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_c532.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0738_Product_5250.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0738_Product_5250.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1bad_Product_f016.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1bad_Product_f016.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsx.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b331.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b331.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_7021.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_04e8_Product_7021.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0738_Product_5274.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0738_Product_5274.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1bad_Product_f023.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1bad_Product_f023.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsxv26.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_dsxv26.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b332.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b332.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_a000.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_04e8_Product_a000.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0b05_Product_4500.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_0b05_Product_4500.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1bad_Product_f027.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1bad_Product_f027.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/synaptics_rmi4_i2c.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b343.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b343.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_a005.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_04e8_Product_a005.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1038_Product_1412.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1038_Product_1412.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1bad_Product_f036.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1bad_Product_f036.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_b344.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_046d_Product_b344.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_a006.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_04e8_Product_a006.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_12bd_Product_d015.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_12bd_Product_d015.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_1d79_Product_0009.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_1d79_Product_0009.kl
 
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml
+    IPACM_cfg.xml \
+    liboffloadhal
 
 # IRQ
 PRODUCT_COPY_FILES += \
@@ -241,11 +283,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# ConsumerIr
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl \
-    android.hardware.ir@1.0-service
-
 # Keymaster HAL
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
@@ -253,7 +290,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.xiaomi_rosy
+    android.hardware.light@2.0-service.samsung
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -288,7 +325,8 @@ PRODUCT_PACKAGES += \
     libOmxSwVencHevc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_foundation
 
 # Power
 PRODUCT_PACKAGES += \
@@ -302,7 +340,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 # Properties
--include device/xiaomi/rosy/prop.mk
+-include device/samsung/gta2xl/prop.mk
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -315,13 +353,10 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.target.rc \
-    ueventd.qcom.rc \
-    init.rosy.rc \
-    init.goodix.sh
+    ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
-    init.baseband.sh \
     init.qcom.post_boot.sh
 
 # RenderScript HAL
@@ -346,12 +381,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
-    $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf
+    android.hardware.sensors@1.0-impl
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
@@ -363,6 +393,7 @@ PRODUCT_COPY_FILES += \
 
 # Trust HAL
 PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.samsung \
     vendor.lineage.trust@1.0-service
 
 # USB HAL
@@ -407,7 +438,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
-
-# Wi-Fi Display
-PRODUCT_BOOT_JARS += \
-    WfdCommon

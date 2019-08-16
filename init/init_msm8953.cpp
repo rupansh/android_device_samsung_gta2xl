@@ -42,16 +42,6 @@ char const *heapminfree;
 
 using android::init::property_set;
 
-// fingerprint property for rosy
-static void init_finger_print_properties()
-{
-	if (access("/persist/data/fingerprint_version", 0) == -1) {
-		property_set("ro.boot.fingerprint", "fpc");
-	} else {
-		property_set("ro.boot.fingerprint", "goodix");
-	}
-}
-
 void property_override(char const prop[], char const value[])
 {
     prop_info *pi;
@@ -63,32 +53,12 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void check_device()
-{
-    struct sysinfo sys;
-
-    sysinfo(&sys);
-
-    if (sys.totalram > 2048ull * 1024 * 1024) {
-        // from - Stock rom
-        heapgrowthlimit = "256m";
-        heapminfree = "4m";
-    } else {
-        // from - phone-xxhdpi-2048-dalvik-heap.mk
-        heapgrowthlimit = "192m";
-        heapminfree = "2m";
-   }
-}
-
 void vendor_load_properties()
 {
-    check_device();
-    init_finger_print_properties();
-
     property_override("dalvik.vm.heapstartsize", "16m");
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    property_override("dalvik.vm.heapgrowthlimit", "256m");
     property_override("dalvik.vm.heapsize", "512m");
     property_override("dalvik.vm.heaptargetutilization", "0.75");
-    property_override("dalvik.vm.heapminfree", heapminfree);
+    property_override("dalvik.vm.heapminfree", "4m");
     property_override("dalvik.vm.heapmaxfree", "8m");
 }
