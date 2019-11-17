@@ -57,3 +57,6 @@ allow init cameraserver:binder call;
 allow init ion_device:chr_file ioctl;
 allow init sysfs_fpc:file { open read write };
 allow init video_device:chr_file ioctl;
+
+allow init hal_perf_default:binder call;
+allow init ion_device:chr_file { open read };
