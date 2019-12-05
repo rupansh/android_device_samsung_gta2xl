@@ -84,7 +84,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.time.monotonic=1 \
     persist.camera.eis.enable=1 \
     persist.camera.camera2=true \
-    persist.camera.is_type=3 \
+    persist.camera.is_type=5 \
+    persist.camera.gzoom.at=0 \
+    persist.camera.googfd.enable=1 \
     persist.camera.max.previewfps=60 \
     vidc.enc.dcvs.extra-buff-count=2 \
     vidc.dec.disable.split.cpu=1 \
@@ -317,11 +319,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.protected_contents=true
 
+# Early phase offset configuration for SurfaceFlinger
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.early_phase_offset_ns=1500000 \
     debug.sf.early_app_phase_offset_ns=1500000 \
     debug.sf.early_gl_phase_offset_ns=3000000 \
     debug.sf.early_gl_app_phase_offset_ns=15000000
+
+# Enable backpressure for GL comp
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_gl_backpressure=1
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
