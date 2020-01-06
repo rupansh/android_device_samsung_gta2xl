@@ -38,12 +38,12 @@ PRODUCT_MODEL := Moto G (5S) Plus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Moto G (5S) Plus" \
-    PRIVATE_BUILD_DESC="sanders-user 8.1.0 OPS28.65-36 9fea release-keys" \
+    PRIVATE_BUILD_DESC="sanders-user 8.1.0 OPS28.65-36-14 63857 release-keys"
 
-BUILD_FINGERPRINT := google/walleye/walleye:9/PPP3.180510.008/4811556:user/release-keys
+BUILD_FINGERPRINT :=  motorola/payton/payton:8.0.0/OPWS27.57-25-6-10/12:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint="google/walleye/walleye:9/PPP3.180510.008/4811556:user/release-keys"
+    ro.build.fingerprint="motorola/payton/payton:8.0.0/OPWS27.57-25-6-10/12:user/release-keys"
 
 # for specific
 $(call inherit-product, vendor/motorola/sanders/sanders-vendor.mk)
