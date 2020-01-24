@@ -1,0 +1,17 @@
+[
+  {
+    "repository": "crdroidandroid/android_vendor_motorola_sanders",
+    "target_path": "vendor/motorola/sanders",
+    "branch": "10.0"
+  },
+  {
+    "repository": "crdroidandroid/android_kernel_motorola_msm8953",
+    "target_path": "kernel/motorola/msm8953",
+    "branch": "10.0"
+  },
+  {
+    "repository": "LineageOS/android_system_qcom",
+    "target_path": "system/qcom",
+    "branch": "lineage-17.1"
+  }
+]
