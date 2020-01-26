@@ -31,6 +31,7 @@ on init
     setprop ro.hw.radio ${ro.boot.radio}
     setprop ro.hw.fps true
     setprop ro.hw.imager 13MP
+    setprop ro.hw.dtv true
     setprop ro.product.manufacturer motorola
     setprop ro.product.model "Moto G (5S) Plus"
     setprop ro.product.vendor.model "Moto G (5S) Plus"
