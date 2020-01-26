@@ -32,7 +32,6 @@ import org.lineageos.settings.device.ServiceWrapper.LocalBinder;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     static final String TAG = "LineageActions";
-    final String NAVBAR_SHOWN = "navbar_shown";
 
     private ServiceWrapper mServiceWrapper;
 

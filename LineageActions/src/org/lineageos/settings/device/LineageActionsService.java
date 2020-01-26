@@ -33,20 +33,12 @@ import org.lineageos.settings.device.actions.FlipToMute;
 import org.lineageos.settings.device.actions.LiftToSilence;
 import org.lineageos.settings.device.actions.ProximitySilencer;
 
-import org.lineageos.settings.device.doze.DozePulseAction;
-import org.lineageos.settings.device.doze.GlanceSensor;
-import org.lineageos.settings.device.doze.ProximitySensor;
-import org.lineageos.settings.device.doze.ScreenReceiver;
-import org.lineageos.settings.device.doze.ScreenStateNotifier;
-
-public class LineageActionsService extends IntentService implements ScreenStateNotifier,
-        UpdatedStateNotifier {
+public class LineageActionsService extends IntentService implements UpdatedStateNotifier {
     private static final String TAG = "LineageActions";
 
     private final PowerManager mPowerManager;
     private final PowerManager.WakeLock mWakeLock;
 
-    private final List<ScreenStateNotifier> mScreenStateNotifiers = new LinkedList<>();
     private final List<UpdatedStateNotifier> mUpdatedStateNotifiers = new LinkedList<>();
 
     public LineageActionsService(Context context) {
@@ -56,14 +48,6 @@ public class LineageActionsService extends IntentService implements ScreenStateN
 
         LineageActionsSettings lineageActionsSettings = new LineageActionsSettings(context, this);
         SensorHelper sensorHelper = new SensorHelper(context);
-        new ScreenReceiver(context, this);
-
-        DozePulseAction mDozePulseAction = new DozePulseAction(context);
-        mScreenStateNotifiers.add(mDozePulseAction);
-
-        // Actionable sensors get screen on/off notifications
-        mScreenStateNotifiers.add(new GlanceSensor(lineageActionsSettings, sensorHelper, mDozePulseAction));
-        mScreenStateNotifiers.add(new ProximitySensor(lineageActionsSettings, sensorHelper, mDozePulseAction));
 
         // Other actions that are always enabled
         mUpdatedStateNotifiers.add(new CameraActivationSensor(lineageActionsSettings, sensorHelper));
@@ -82,32 +66,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
     protected void onHandleIntent(Intent intent) {
     }
 
-    @Override
-    public void screenTurnedOn() {
-            if (!mWakeLock.isHeld()) {
-                mWakeLock.acquire();
-            }
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOn();
-        }
-    }
-
-    @Override
-    public void screenTurnedOff() {
-            if (mWakeLock.isHeld()) {
-                mWakeLock.release();
-            }
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOff();
-        }
-    }
-
     public void updateState() {
-        if (mPowerManager.isInteractive()) {
-            screenTurnedOn();
-        } else {
-            screenTurnedOff();
-        }
         for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
             notifier.updateState();
         }
