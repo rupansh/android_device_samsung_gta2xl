@@ -16,6 +16,8 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
 # Vendor properties
 -include device/motorola/sanders/vendor_prop.mk
 
@@ -494,7 +496,4 @@ PRODUCT_USE_QCOM_SURFACEFLINGER := true
 PRODUCT_ENFORCE_RRO_TARGETS :=*
 PRODUCT_BOARD_PLATFORM := msm8996
 PRODUCT_USES_QCOM_HARDWARE := true
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
-PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
