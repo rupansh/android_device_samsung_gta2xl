@@ -513,4 +513,7 @@
     <bool name="config_dozePulsePickup">true</bool>
     <bool name="config_dozePulseTilt">true</bool>
     <bool name="config_dozePulseProximity">true</bool>
+
+    <!-- Smart charging -->
+    <bool name="config_smartChargingAvailable">false</bool>
 </resources>
