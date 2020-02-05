@@ -6,9 +6,7 @@
 # 1805 - Europe
 # 1806 - USA
 
-sku=`getprop ro.boot.hardware.sku`
-
-if [ "$sku" = "XT1806" ]; then
+if [ $(getprop ro.boot.hardware.sku) == "XT1806" ]; then
     # XT1806 doesn't have NFC chip
     rm /vendor/etc/permissions/android.hardware.nfc.xml
     rm /vendor/etc/permissions/android.hardware.nfc.hce.xml
@@ -17,7 +15,7 @@ if [ "$sku" = "XT1806" ]; then
     rm -r /system/system/app/NfcNci
 fi
 
-if ! [ "$sku" = "XT1802" ]; then
+if [ $(getprop ro.boot.hardware.sku) != "XT1802" ]; then
     # Others variants doesn't have DTV support
     rm /vendor/etc/permissions/com.motorola.hardware.dtv.xml
     rm /vendor/etc/permissions/mot_dtv_permissions.xml
@@ -29,10 +27,9 @@ if ! [ "$sku" = "XT1802" ]; then
     rm -r /vendor/app/DTVService
 fi
 
-if [ "$sku" = "XT1804" ]; then
-    # XT1804 has additional thermal configs
+if [ $(getprop ro.boot.hardware.sku) == "XT1804" ]; then
+    rm /vendor/etc/thermal-engine.conf
     mv /vendor/etc/thermal-engine-INDIA.conf /vendor/etc/thermal-engine.conf
 else
     rm /vendor/etc/thermal-engine-INDIA.conf
 fi
-
