@@ -12,8 +12,9 @@ if [ "$sku" = "XT1806" ]; then
     # XT1806 doesn't have NFC chip
     rm /vendor/etc/permissions/android.hardware.nfc.xml
     rm /vendor/etc/permissions/android.hardware.nfc.hce.xml
+    rm /vendor/etc/permissions/android.hardware.nfc.hcef.xml
     rm /vendor/etc/permissions/com.android.nfc_extras.xml
-    rm -r /system/app/NfcNci
+    rm -r /system/system/app/NfcNci
 fi
 
 if ! [ "$sku" = "XT1802" ]; then
