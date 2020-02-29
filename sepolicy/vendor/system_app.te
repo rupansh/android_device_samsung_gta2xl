@@ -14,6 +14,8 @@ allow system_app sysfs_fpc_proximity:file { rw_file_perms };
 allow system_app sysfs_fpc:dir search;
 
 get_prop(system_app, diag_prop);
+set_prop(system_app, fm_prop);
+
 binder_call(system_app, qtitetherservice_service);
 binder_call(system_app, wificond);
 
