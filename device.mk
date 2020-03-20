@@ -148,7 +148,10 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libtinyxml \
     libdisplayconfig \
+    libdisplayconfig.vendor \
+    libqdMetaData \
     libqdMetaData.system \
+    libqdMetaData.vendor \
     vendor.display.config@1.0
 
 PRODUCT_PACKAGES += \
@@ -465,6 +468,10 @@ PRODUCT_PACKAGES += \
     product_charger_res_images
 
 # Wi-Fi Display
+PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac
+
 PRODUCT_BOOT_JARS += \
     WfdCommon
 

@@ -327,6 +327,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # SurfaceFlinger
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.protected_contents=true
 
 # Early phase offset configuration for SurfaceFlinger
@@ -388,6 +389,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     vendor.video.disable.ubwc=1 \
     persist.sys.wfd.virtual=0 \
+    vendor.gralloc.disable_wb_ubwc=1 \
     persist.sys.wfd.nohdcp=1
 
 # VM properties to make phone actually usable
