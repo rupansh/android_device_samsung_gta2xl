@@ -255,6 +255,9 @@ TARGET_USES_MKE2FS := true
 # Encryption
 TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
+# SurfaceFlinger
+TARGET_USE_QCOM_SURFACEFLINGER := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -269,6 +272,3 @@ WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # QTI Device Target
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
-# SurfaceFlinger
-TARGET_USE_AOSP_SURFACEFLINGER := true
