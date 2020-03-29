@@ -13,9 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+LOCAL_PATH := $(call my-dir)
+
 ifneq ($(filter sanders,$(TARGET_DEVICE)),)
 
-LOCAL_PATH := $(call my-dir)
+include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
 
 FIRMWARE_MOUNT_POINT := $(TARGET_OUT_VENDOR)/firmware_mnt
 DSP_MOUNT_POINT := $(TARGET_OUT_VENDOR)/dsp
@@ -164,7 +168,5 @@ $(NUKE_NOTEPAD): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(NUKE_NOTEPAD)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif
