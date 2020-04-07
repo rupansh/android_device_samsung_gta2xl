@@ -8,10 +8,5 @@
     "repository": "PotatoDevices/kernel_motorola_sanders",
     "target_path": "kernel/motorola/sanders",
     "branch": "croquette-release"
-  },
-  {
-    "repository": "PotatoProject/system_qcom",
-    "target_path": "system/qcom",
-    "branch": "baked-release"
   }
 ]
