@@ -464,9 +464,6 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
 
-# Use Qcom Surfaceflinger
-PRODUCT_USE_QCOM_SURFACEFLINGER := true
-
 PRODUCT_BOARD_PLATFORM := msm8996
 
 PRODUCT_USES_QCOM_HARDWARE := true
