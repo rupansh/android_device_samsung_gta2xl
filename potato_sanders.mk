@@ -30,6 +30,7 @@ TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
 
 ## Device identifier. This must come after all inclusions
+PRODUCT_ARCH := arm64
 PRODUCT_DEVICE := sanders
 PRODUCT_NAME := potato_sanders
 PRODUCT_BRAND := motorola
