@@ -112,7 +112,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
-    debug.sf.hw=1 \
+    debug.egl.hw=0 \
+    debug.sf.hw=0 \
     debug.sf.latch_unsignaled=1 \
     persist.hwc.mdpcomp.enable=true \
     dev.pm.dyn_samplingrate=1 \
@@ -383,7 +384,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     vendor.video.disable.ubwc=1 \
     persist.sys.wfd.virtual=0 \
-    vendor.gralloc.disable_wb_ubwc=1 \
     persist.sys.wfd.nohdcp=1
 
 # VM properties to make phone actually usable
