@@ -945,3 +945,20 @@ vendor/firmware/cpp_firmware_v1_5_1.fw
 vendor/firmware/cpp_firmware_v1_5_2.fw
 vendor/firmware/cpp_firmware_v1_6_0.fw
 vendor/firmware/cpp_firmware_v1_8_0.fw
+
+# Qdutils
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+
+# WiFi
+vendor/bin/cnss-daemon
+vendor/bin/cnss_diag
+vendor/bin/fstman
+vendor/lib/libwifi-hal-ctrl.so
+vendor/lib64/libwifi-hal-ctrl.so
+
+# Sensor-calibrate
+vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
+vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
