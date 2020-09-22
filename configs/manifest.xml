@@ -18,15 +18,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.biometrics.fingerprint</name>
-        <transport>hwbinder</transport>
-        <version>2.1</version>
-        <interface>
-            <name>IBiometricsFingerprint</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -36,13 +27,14 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
+        <name>vendor.samsung.hardware.camera.provider</name>
+        <transport arch="32">passthrough</transport>
         <version>2.4</version>
         <interface>
-            <name>ICameraProvider</name>
+            <name>ISecCameraProvider</name>
             <instance>legacy/0</instance>
         </interface>
+        <fqname>@2.4::ISecCameraProvider/legacy/0</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.configstore</name>
@@ -52,6 +44,7 @@
             <name>ISurfaceFlingerConfigs</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.drm</name>
@@ -60,13 +53,17 @@
         <interface>
             <name>ICryptoFactory</name>
             <instance>default</instance>
-            <instance>widevine</instance>
         </interface>
         <interface>
             <name>IDrmFactory</name>
             <instance>default</instance>
-            <instance>widevine</instance>
         </interface>
+        <fqname>@1.0::ICryptoFactory/default</fqname>
+        <fqname>@1.0::IDrmFactory/default</fqname>
+        <fqname>@1.1::ICryptoFactory/clearkey</fqname>
+        <fqname>@1.1::ICryptoFactory/widevine</fqname>
+        <fqname>@1.1::IDrmFactory/clearkey</fqname>
+        <fqname>@1.1::IDrmFactory/widevine</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
@@ -76,6 +73,7 @@
             <name>IGatekeeper</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IGatekeeper/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gnss</name>
@@ -85,6 +83,17 @@
             <name>IGnss</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IGnss/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.gnss</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ILocHidlGnss</name>
+            <instance>gnss_vendor</instance>
+        </interface>
+        <fqname>@1.0::ILocHidlGnss/gnss_vendor</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.allocator</name>
@@ -94,6 +103,7 @@
             <name>IAllocator</name>
             <instance>default</instance>
         </interface>
+        <fqname>@2.0::IAllocator/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.composer</name>
@@ -103,15 +113,17 @@
             <name>IComposer</name>
             <instance>default</instance>
         </interface>
+        <fqname>@2.1::IComposer/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.mapper</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport arch="32">passthrough</transport>
         <version>2.0</version>
         <interface>
             <name>IMapper</name>
             <instance>default</instance>
         </interface>
+        <fqname>@2.0::IMapper/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.health</name>
@@ -120,7 +132,10 @@
         <interface>
             <name>IHealth</name>
             <instance>default</instance>
+            <instance>exthealth</instance>
         </interface>
+        <fqname>@2.0::IHealth/default</fqname>
+        <fqname>@2.0::IHealth/exthealth</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
@@ -130,6 +145,7 @@
             <name>IKeymasterDevice</name>
             <instance>default</instance>
         </interface>
+        <fqname>@3.0::IKeymasterDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.light</name>
@@ -139,6 +155,17 @@
             <name>ILight</name>
             <instance>default</instance>
         </interface>
+        <fqname>@2.0::ILight/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.samsung.hardware.light</name>
+        <transport arch="32">passthrough</transport>
+        <version>2.0</version>
+        <interface>
+            <name>ISecLight</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::ISecLight/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -152,6 +179,8 @@
             <name>IOmxStore</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IOmx/default</fqname>
+        <fqname>@1.0::IOmxStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.memtrack</name>
@@ -161,58 +190,46 @@
             <name>IMemtrack</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IMemtrack/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.nfc</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>INfc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
+    <hal format="hidl" override="true">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
-            <instance>slot2</instance>
         </interface>
         <interface>
             <name>ISap</name>
             <instance>slot1</instance>
-            <instance>slot2</instance>
         </interface>
+        <fqname>@1.2::IRadio/slot1</fqname>
+        <fqname>@1.2::ISap/slot1</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.radio.deprecated</name>
+    <hal format="hidl" override="true">
+        <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOemHook</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
-        <transport arch="32+64">passthrough</transport>
+        <transport arch="32">passthrough</transport>
         <version>1.0</version>
         <interface>
             <name>IDevice</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
-        <transport>hwbinder</transport>
+        <transport arch="32">passthrough</transport>
         <version>1.0</version>
         <interface>
             <name>ISensors</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::ISensors/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.thermal</name>
@@ -338,24 +355,6 @@
         <interface>
             <name>IDisplayPostproc</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.esepowermanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IEsePowerManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.gnss</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ILocHidlGnss</name>
-            <instance>gnss_vendor</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -523,5 +522,25 @@
             <name>IPictureAdjustment</name>
             <instance>default</instance>
         </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.samsung.hardware.miscpower</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISecMiscPower</name>
+            <instance>miscpower</instance>
+        </interface>
+        <fqname>@1.0::ISecMiscPower/miscpower</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.samsung.hardware.vibrator</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISecVibrator</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::ISecVibrator/default</fqname>
     </hal>
 </manifest>

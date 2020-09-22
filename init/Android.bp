@@ -15,12 +15,9 @@
 //
 
 cc_library_static {
-    name: "libinit_sanders",
+    name: "libinit_msm8953",
     recovery_available: true,
-    srcs: ["init_sanders.cpp"],
-    include_dirs: [
-        "system/core/base/include",
-        "system/core/init",
-        "external/selinux/libselinux/include"
-    ]
+    srcs: ["init_msm8953.cpp"],
+    static_libs: ["libbase", "libselinux"],
+    include_dirs: ["system/core/init"]
 }

@@ -1,6 +1,0 @@
-subdirs = [
-    "usb",
-    "fingerprint",
-]
-soong_namespace {
-}

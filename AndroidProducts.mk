@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/lineage_sanders.mk
+    $(LOCAL_DIR)/lineage_gta2xl.mk
 
-COMMON_LUNCH_CHOICES := \
-    lineage_sanders-user \
-    lineage_sanders-userdebug \
-    lineage_sanders-eng
+COMMON_LUNCH_CHOICES += \
+    lineage_gta2xl-eng \
+    lineage_gta2xl-userdebug \
+    lineage_gta2xl-user
