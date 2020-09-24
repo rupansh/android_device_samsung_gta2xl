@@ -3,10 +3,15 @@ type motosh_prop, property_type;
 type hw_rev_prop, property_type;
 type touch_prop, property_type;
 type diag_prop, property_type;
+type sec_camera_prop, property_type;
 type thermal_prop, property_type;
 type qti_telephony_prop, property_type;
 type wcnss_prop, property_type;
 type tee_listener_prop, property_type;
+type vendor_factory_prop, property_type;
+type compact_dump_prop, property_type;
+type tzdaemon_prop, property_type;
+type vendor_tztsdaemon_prop, property_type;
 
 # Dolby
 type vendor_dolby_loglevel_prop, property_type;

@@ -14,13 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
--include vendor/motorola/sanders/BoardConfigVendor.mk
+-include vendor/samsung/gta2xl/BoardConfigVendor.mk
 
-DEVICE_PATH := device/motorola/sanders
+DEVICE_PATH := device/samsung/gta2xl
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
-BOARD_VENDOR := motorola-qcom
+BOARD_VENDOR := samsung-qcom
 
 # AIDs and CAPS
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -30,34 +30,17 @@ TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8953
+TARGET_BOOTLOADER_BOARD_NAME := SDM450
 TARGET_NO_BOOTLOADER := true
 
-BUILD_BROKEN_DUP_RULES := true
-
-BOARD_ROOT_EXTRA_FOLDERS := fsg
-
 # Architecture
-TARGET_ARCH := arm64
+TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := cortex-a53
-TARGET_CPU_CORTEX_A53 := true
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
-
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_SMP := true
 TARGET_USES_64_BIT_BINDER := true
-DISABLE_DTC_OPTS := true
-
-# Asserts
-TARGET_OTA_ASSERT_DEVICE := sanders,sanders_retail
 
 # GPS
 TARGET_NO_RPC := true
@@ -70,24 +53,24 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 #BUILD_DEVICE_LIBHIDL := false
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sanders
-TARGET_RECOVERY_DEVICE_MODULES := libinit_sanders
+TARGET_INIT_VENDOR_LIB := libinit_msm8953
+TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8953
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci firmware_class.path=/vendor/firmware_mnt/image loop.max_part=16
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_IMAGE_NAME := Image.gz
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_DTBTOOL_ARGS := --force-v3
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := 6573524
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8953
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := sanders_defconfig
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8953
+TARGET_KERNEL_CONFIG := gta2xllte_eur_open_defconfig
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
+TARGET_KERNEL_CLANG_COMPILE := false
+BOARD_ROOT_EXTRA_FOLDERS := dsp efs firmware firmware-modem persist
 
 # APEX image
 DEXPREOPT_GENERATE_APEX_IMAGE := true
@@ -152,20 +135,21 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-BOARD_QTI_CAMERA_32BIT_ONLY := true
+TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Charger
-BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE   := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_NO_CHARGER_LED := true
-WITH_CM_CHARGER := false
-
-# DT2W
-TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_KEYMASTER_V03 := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_SWV8_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
 
 # Enable dexpreopt to speed boot time
 WITH_DEXPREOPT := true
@@ -186,10 +170,9 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # FM
 BOARD_HAVE_QCOM_FM := true
+BOARD_HAVE_FM_RADIO := true
 BOARD_DISABLE_FMRADIO_LIBJNI := true
-
-# Keymaster
-TARGET_PROVIDES_KEYMASTER := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -198,50 +181,50 @@ TARGET_PROVIDES_LIBLIGHT := true
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/compatibility_matrix.xml
 
-# NFC
-NXP_CHIP_TYPE := PN551
-BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216        #    16384 * 1024 mmcblk0p37
-BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456      #   262144 * 1024 mmcblk0p52
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432    #    32768 * 1024 mmcblk0p38
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296    #  4194304 * 1024 mmcblk0p53
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 25614597120 # 25014255 * 1024 mmcblk0p54
-BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist \
-    /vendor/firmware_mnt:/firmware \
-    /vendor/dsp:/dsp
+BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
+BOARD_CACHEIMAGE_PARTITION_SIZE := 396744000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3241193472
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 28144000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2485563600 # 25765059584 - 16384
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
 # Power
 TARGET_HAS_NO_WLAN_STATS := true
+TARGET_USES_INTERACTION_BOOST := true
 
 # QC flags
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
+TARGET_USE_SDCLANG := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 LZMA_RAMDISK_TARGETS := recovery
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+PROTOBUF_SUPPORTED := true
+TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BUILD_BROKEN_DUP_RULES := true
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368
+BOARD_VENDORIMAGE_PARTITION_SIZE := 487878656
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 # PRODUCT_SHIPPING_API_LEVEL := 25
@@ -250,9 +233,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
-
-# Encryption
-TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -266,5 +246,3 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
-# QTI Device Target
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true

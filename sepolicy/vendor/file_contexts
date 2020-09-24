@@ -1,6 +1,5 @@
-/bt_firmware(/.*)?       u:object_r:bt_firmware_file:s0
 /firmware(/.*)?          u:object_r:firmware_file:s0
-/fsg(/.*)?               u:object_r:fsg_file:s0
+/firmware-modem(/.*)?    u:object_r:firmware_file:s0
 
 # ADSP
 /data/adspd(/.*)?                                        u:object_r:adspd_data_file:s0
@@ -119,10 +118,6 @@
 /(vendor|system/vendor)/bin/qmi_motext_hook                                       u:object_r:rild_exec:s0
 
 /sys/kernel/debug/rmt_storage(/.*)? u:object_r:debugfs_rmt_storage:s0
-
-# Fingerprint custom hal
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service_32 u:object_r:hal_fingerprint_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-fpcservice u:object_r:hal_fingerprint_default_exec:s0
 
 # Light HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.sanders                                     u:object_r:hal_light_default_exec:s0

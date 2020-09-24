@@ -1,5 +1,7 @@
 #
-# vendor props for sanders
+# vendor props for gta2xl
+# generated with https://github.com/rupansh/stuff/blob/master/systempropgen.py
+# base: sanders
 #
 
 # Audio
@@ -7,8 +9,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
     audio.deep_buffer.media=true \
     audio.offload.disable=false \
-    audio.offload.min.duration.secs=60 \
-    audio.offload.video=false \
+    audio.offload.min.duration.secs=30 \
+    audio.offload.video=true \
     av.offload.enable=false \
     av.debug.disable.pers.cache=1 \
     qcom.hw.aac.encoder=false \
@@ -21,7 +23,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.calfile4=/vendor/etc/acdbdata/Hdmi_cal.acdb \
     persist.vendor.audio.calfile5=/vendor/etc/acdbdata/Headset_cal.acdb \
     persist.vendor.audio.calfile6=/vendor/etc/acdbdata/Speaker_cal.acdb \
-    persist.vendor.audio.fluence.speaker=false \
+    persist.vendor.audio.fluence.speaker=true \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicecomm=true \
     persist.vendor.audio.fluence.voicerec=false \
@@ -29,10 +31,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.af.client_heap_size_kbyte=7168 \
     ro.vendor.audio.sdk.fluencetype=none \
     ro.vendor.audio.sdk.ssr=false \
-    vendor.audio_hal.period_size=240 \
+    vendor.audio_hal.period_size=192 \
     vendor.audio.flac.sw.decoder.24bit=true \
     vendor.audio.offload.buffer.size.kb=64 \
-    vendor.audio.offload.gapless.enabled=false \
+    vendor.audio.offload.gapless.enabled=true \
     vendor.audio.offload.multiple.enabled=false \
     vendor.audio.offload.passthrough=false \
     vendor.audio.offload.track.enable=true \
@@ -40,8 +42,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.playback.mch.downsample=true \
     vendor.audio.safx.pbe.enabled=true \
     vendor.audio.tunnel.encode=false \
-    vendor.use.voice.path.for.pcm.voip=false
-    vendor.audio.dolby.ds2.enabled=true \
+    vendor.use.voice.path.for.pcm.voip=false \
+    vendor.audio.dolby.ds2.enabled=false \
     vendor.audio.dolby.ds2.hardbypass=false
 
 # Bluetooth
@@ -52,7 +54,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cutoff_voltage_mv=3400 \
     ro.bluetooth.hfp.ver=1.7 \
     qcom.bluetooth.soc=smd \
-    vendor.qcom.bluetooth.soc=smd \
     ro.qualcomm.bt.hci_transport=smd \
     ro.qualcomm.bluetooth.opp=true \
     ro.qualcomm.bluetooth.hfp=true \
@@ -89,11 +90,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.gzoom.at=0 \
     persist.camera.googfd.enable=1 \
     persist.camera.max.previewfps=60 \
-    vidc.enc.dcvs.extra-buff-count=2 \
     vidc.dec.disable.split.cpu=1 \
     video.disable.ubwc=1 \
-    persist.vendor.camera.privapp.list=com.motorola.camera2,com.google.android.Pixel2Mod \
-    vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod
+    persist.vendor.camera.privapp.list=com.google.android.Pixel2Mod \
+    vendor.camera.aux.packagelist=com.google.android.Pixel2Mod
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -101,10 +101,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.rat.wlan.chip.oem=WCN \
     persist.vendor.dpm.feature=0 \
     persist.vendor.sys.cnd.iwlan=1
-
-#property to enable fingerprint
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.qfp=false
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -127,7 +123,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.qualcomm.cabl=0 \
     ro.sf.hwc_set_default_colormode=true \
-    ro.sf.lcd_density=480 \
+    ro.sf.lcd_density=240 \
     ro.vendor.display.cabl=2 \
     sdm.debug.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
@@ -173,7 +169,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
     persist.dbg.vt_avail_ovr=1 \
     persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.data_lte_sys_ind=1
+    persist.radio.data_lte_sys_ind=1 \
     persist.vendor.radio.force_on_dc=true \
     persist.radio.custom_ecc=1 \
     persist.radio.data_con_rprt=1 \
@@ -188,10 +184,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.always_send_plmn=true \
     persist.rcs.supported=1 \
     persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.data_lte_sys_ind=1\
     persist.vendor.radio.voice_on_lte=1 \
     persist.radio.poweron_opt=1 \
     persist.vendor.radio.calls.on.ims=1
@@ -228,18 +220,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
     persist.cne.feature=1
 
-# NITZ
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rild.nitz_plmn="" \
-    persist.rild.nitz_long_ons_0="" \
-    persist.rild.nitz_long_ons_1="" \
-    persist.rild.nitz_long_ons_2="" \
-    persist.rild.nitz_long_ons_3="" \
-    persist.rild.nitz_short_ons_0="" \
-    persist.rild.nitz_short_ons_1="" \
-    persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3=""
-
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
@@ -261,14 +241,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.dfr_mode_set=1 \
     persist.vendor.radio.add_power_save=1 \
-    persist.vendor.dpm.feature=0 \
     persist.vendor.radio.force_get_pref=1 \
     persist.radio.msgtunnel.start=true \
     persist.vendor.radio.no_wait_for_card=1 \
     persist.vendor.radio.oem_ind_to_both=0 \
     persist.vendor.radio.relay_oprt_change=1 \
     ril.subscription.types=NV,RUIM \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ro.mot.ignore_csim_appid=true \
     persist.sys.ssr.restart_level=ALL_ENABLE \
     persist.sys.qc.sub.rdump.on=1 \
@@ -281,11 +259,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.qcril_uim_vcc_feature=1 \
     persist.mot.gps.conf.from.sim=true \
     persist.net.doxlat=true \
-    persist.radio.REVERSE_QMI=0 \
     persist.radio.ROTATION_ENABLE=1 \
     persist.radio.adb_log_on=0 \
-    persist.radio.calls.on.ims=true \
-    persist.radio.domain.ps=0 \
     persist.radio.sar_sensor=1 \
     persist.vendor.radio.sib16_support=1 \
     persist.radio.sib16_support=1 \
@@ -293,42 +268,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     persist.vendor.radio.eri64_as_home=1 \
     persist.vendor.radio.data_con_rprt=1 \
-    persist.vendor.radio.force_on_dc=true \
-    persist.radio.custom_ecc=1 \
-    persist.radio.data_con_rprt=1 \
-    persist.vendor.radio.data_ltd_sys_ind=1 \
-    persist.radio.data_ltd_sys_ind=1 \
-    persist.vendor.radio.ignore_dom_time=10 \
-    persist.radio.ignore_dom_time=10 \
-    persist.radio.rat_on=combine \
-    persist.radio.is_wps_enabled=true \
-    persist.radio.videopause.mode=1 \
-    persist.radio.sap_silent_pin=1 \
-    persist.radio.always_send_plmn=true \
-    persist.rcs.supported=1 \
     ro.telephony.default_network=22,20 \
-    persist.radio.msgtunnel.start=true \
-    persist.vendor.radio.qcril_uim_vcc_feature=1 \
     persist.radio.schd.cache=3500 \
     persist.vendor.radio.aosp_usr_pref_sel=true \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.lte_vrte_ltd=1 \
     persist.vendor.radio.cs_srv_type=1 \
-    persist.dbg.ims_volte_enable=1 \
-    persist.data.qmi.adb_logmask=0 \
     telephony.lteOnCdmaDevice=1
-
-# SurfaceFlinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-    ro.surface_flinger.protected_contents=true
-
-# Early phase offset configuration for SurfaceFlinger
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=1500000 \
-    debug.sf.early_app_phase_offset_ns=1500000 \
-    debug.sf.early_gl_phase_offset_ns=3000000 \
-    debug.sf.early_gl_app_phase_offset_ns=15000000
 
 # Enable backpressure for GL comp
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -357,25 +303,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.rmd=false \
     ro.vendor.sdk.sensors.gestures=false \
     ro.vendor.sensors.facing=false \
-    ro.vendor.sensors.scrn_ortn=false \
+    ro.vendor.sensors.scrn_ortn=true \
     ro.vendor.sensors.pedometer=false \
     ro.vendor.sensors.glance_approach=false \
-    ro.hardware.sensors=sanders
+    ro.hardware.sensors=gta2xl
 
 #Trim properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.trim_enable_memory=2147483648
-
-# USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.usb.mtp=0x2e82 \
-    ro.usb.mtp_adb=0x2e76 \
-    ro.usb.ptp=0x2e83 \
-    ro.usb.ptp_adb=0x2e84 \
-    ro.usb.bpt=0x2ee5 \
-    ro.usb.bpt_adb=0x2ee6 \
-    ro.usb.bpteth=0x2ee7 \
-    ro.usb.bpteth_adb=0x2ee8
 
 #WFD
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -394,12 +329,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-threads=8 \
     dalvik.vm.dex2oat-filter=speed \
     dalvik.vm.image-dex2oat-filter=speed \
-    dalvik.vm.heapgrowthlimit=192m \
+    dalvik.vm.heapgrowthlimit=256m \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapsize=512m \
-    dalvik.vm.heaptargetutilization=0.6 \
-    dalvik.vm.heapminfree=8m \
-    dalvik.vm.heapmaxfree=16m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapmaxfree=8m \
     dalvik.vm.stack-trace-dir=/data/anr
 
 #DRM
@@ -415,9 +350,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Boot
 PRODUCT_PROPERTY_OVERRIDES += \
-    sys.vendor.shutdown.waittime=500
-
-# Misc
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=pn54x \
-    persist.mot.gps.smart_battery=1
+    sys.vendor.shutdown.waittime=500 \
+    ro.hardware.gatekeeper=mdfpp

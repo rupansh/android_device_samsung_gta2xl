@@ -7,9 +7,11 @@ type chargeonly_data_file, file_type, data_file_type, core_data_file_type;
 # FSG
 type fsg_file, fs_type, contextmount_type;
 
+type prov_efs_file, file_type;
+
 # Modem
 type persist_modem_file, file_type, data_file_type, core_data_file_type;
-
+type app_efs_file, file_type, mlstrustedobject;
 type persist_omadm_file, file_type, data_file_type, core_data_file_type;
 type sds_data_file, file_type, data_file_type, core_data_file_type;
 type pds_public_file, file_type, data_file_type, core_data_file_type;
@@ -42,7 +44,7 @@ type sysfs_capsense, fs_type, sysfs_type;
 type sysfs_batt, fs_type, sysfs_type;
 type sysfs_cnss, fs_type, sysfs_type;
 type sysfs_fpc, fs_type, sysfs_type;
-
+type sysfs_camera_writable, fs_type, sysfs_type;
 type fpc_socket, file_type, data_file_type, core_data_file_type;
 type fpc_data_file, file_type;
 
@@ -66,3 +68,5 @@ type theme_data_file, file_type, data_file_type;
 
 # WCNSS
 type wcnss_data_file, file_type, data_file_type;
+
+type sec_poc_file, file_type, mlstrustedobject;
